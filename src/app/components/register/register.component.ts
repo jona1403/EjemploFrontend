@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators} from '@angular/forms';
+import { RegisterService } from '../../services/register/register.service';
+import { Register } from '../../models/register/register';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,7 +21,7 @@ export class RegisterComponent {
   confirmContrasenia = new FormControl('',[Validators.required]);
   mostrarMensaje = false;
   mostrarMensajeError = false;
-
+  constructor(private registerService: RegisterService) { }
 
   validacionCont(): boolean {
     const regex = new RegExp('(?=.*[A-Z])(?=.*[0-9])(?=.*[!"#$%&/()])([A-Za-z0-9!"#$%&/()]){8,20}');

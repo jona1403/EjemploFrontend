@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login/login.service';
 import { Router } from '@angular/router';
+import { Login } from '../../models/login/login';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,6 +16,9 @@ export class LoginComponent {
   contrasenia = new FormControl('', [Validators.required]);
   mostrarMensaje = false;
   mostrarMensajeError = false;
+
+  constructor(private loginService: LoginService, public router: Router) { }
+
   desactivarMensaje() {
     this.mostrarMensaje = false
     this.mostrarMensajeError = false
@@ -33,9 +39,6 @@ export class LoginComponent {
     return '';
   }
 
-  olvideMiContr() {
-    //this.router.navigateByUrl('/OlvideMiContrasenia');
-  }
 
   login() {
 
